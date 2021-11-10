@@ -38,32 +38,45 @@ class Input extends Component{
       this.setState({fileName: file.name, fileContent: reader.result});
       //checking if comments symbols are included
       if(reader.result.includes('//')){
-        let prevPart = null;
-
-        var newText1 = reader.result
-        //text is read line by line and single lines comments are removed
-        newText1 = newText1
-                .split('\n')
-                .filter(x => !x.includes('\/\/'))
-                .join('\n')
         
-        //multi lines comments are also detected
-        const newText2 = newText1.split('/').map(part => {
-          //check the composition of the comment line with start and endwith
-            if (part.startsWith('*') && part.endsWith('*')) {
-                  prevPart = null;
-                  return null;
-                }
-              
-            if (prevPart !== null) {
-                  part = '/' + part;
-                }
-              
-                prevPart = part;
-              
-                return part;
-                //filter the unwanted parts and rejoin the wanted part
-              }).filter(part => part !== null).join('');
+        function stripMultilineComments(str) {
+          let posOpen;
+          let posClose;
+        
+          while ((posOpen = str.indexOf('/*')) !== -1) {
+        
+            posClose = Math.max(
+              0, str.indexOf('*/', (posOpen + 2))
+            ) || (str.length - 2);
+        
+            str = [
+              str.substring(0, posOpen),
+              str.substring(posClose + 2),
+            ].join('');
+          }
+          return str;
+        }
+        function stripSingleLineComment(str) {
+          let idx;
+          if (
+            (str.trim() !== '') &&
+            ((idx = str.indexOf('//')) !== -1)
+          ) {
+            str = str.substring(0, idx);
+          }
+          return str;
+        }
+        
+        function stripComments(value) {
+          return stripMultilineComments(
+            String(value)
+          )
+          .split('\n')
+          .map(stripSingleLineComment)
+          .join('\n');
+        }
+
+        var newText2 = stripComments(reader.result)
         
         //update the state of name and content after modification
         this.setState({fileName: file.name, fileContent: newText2})
