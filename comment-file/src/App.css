@@ -1,0 +1,112 @@
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+body{
+  background-color: rgb(0, 45, 66);
+  color: white;
+  font-family:  'Montserrat', sans-serif;
+}
+
+#home{
+  text-align: center;
+  font-size: 60px;
+}
+
+.navbar{
+  text-align: center;
+  display: flex;
+  margin-left: 41%;
+  margin-top: 20px;
+}
+
+.navbar a{
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex-direction: row;
+}
+
+.link__home{
+  margin-left: 44%;
+  font-size: 30px;
+  border-radius: 40px;
+  padding: 20px;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.link__home a{
+  color: black;
+  text-decoration: none;
+}
+
+.upload_file{
+  text-align: center;
+  border: none;
+  width: 70vw;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40vh;
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.198);
+}
+
+.btn_disp a{
+  text-decoration: none;
+  color: black;
+}
+
+.btn_disp{
+  padding: 10px;
+  width: 130px;
+  border-radius: 20px;
+  border: none;
+  background-color: white;
+}
+
+input{
+  font-size: 20px;
+  margin-left: 200px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload{
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    width: 130px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.display_page{
+  text-align: center;
+}
+
+.text_content{
+  height: 50vh;
+  width: 70vw;
+  border: 1px solid white;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
