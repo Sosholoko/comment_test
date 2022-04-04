@@ -1,14 +1,14 @@
 import './App.css';
 import React, {Component, useState} from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-//Welcoming page
+// Welcoming page
 const Home = () =>{
   return(
     <>
     <br/><br/><br/>
     <h2 id='home'>
-     <em>/* No Comment */ </em>  File Test 
+     <em> /* No Comment */ </em>  File Test 
     </h2><br/>
     <button className='link__home'><Link  to='/read-file'>
         Upload File
@@ -38,7 +38,6 @@ class Input extends Component{
       this.setState({fileName: file.name, fileContent: reader.result});
       //checking if comments symbols are included
       if(reader.result.includes('//')){
-        
         function stripMultilineComments(str) {
           let posOpen;
           let posClose;
